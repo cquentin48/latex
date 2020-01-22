@@ -1,7 +1,8 @@
 const url = require("url");
 const path = require("path");
+const menuTemplate = require('./menuTemplate');
 
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow,Menu } from "electron";
 
 let window: BrowserWindow | null;
 
@@ -18,6 +19,8 @@ const createWindow = () => {
       slashes: true
     })
   );
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate( menuTemplate() ))
 
   window.on("closed", () => {
     window = null;
